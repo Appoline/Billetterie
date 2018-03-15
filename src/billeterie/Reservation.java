@@ -33,7 +33,7 @@ public class Reservation {
 		return this.place;
 	}
 	public Reservation(JTextField nom, JTextField prenom, JTextField mail, JComboBox<String> concert,ButtonGroup place) throws FormulaireException{
-		if (nom.getText()=="" || prenom.getText()=="" || mail.getText()=="") {
+		if (nom.getText().equals("") || prenom.getText().equals("") || mail.getText().equals("")) {
 			throw new FormulaireException();
 		} else {
 			this.nom=nom.getText();
