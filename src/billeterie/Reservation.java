@@ -3,6 +3,7 @@ package billeterie;
 
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,36 +12,24 @@ import javax.swing.ButtonGroup;
 
 
 public class Reservation {
+	//Attributs 
 	private String nom;
 	private String prenom;
 	private String mail;
 	private String concert;
 	private String place;
 	
-	public String getNom() {
-		return this.nom;
-	}
-	public String getPrenom() {
-		return this.prenom;
-	}
-	public String getMail() {
-		return this.mail;
-	}
-	public String getConcert() {
-		return this.concert;
-	}
-	public String getPlace() {
-		return this.place;
-	}
-	public Reservation(JTextField nom, JTextField prenom, JTextField mail, JComboBox<String> concert,ButtonGroup place) throws FormulaireException{
+
+	//Constructeur
+	public Reservation(JTextField nom, JTextField prenom, JTextField mail, JComboBox<String> concert, ButtonGroup place) throws FormulaireException{
 		if (nom.getText().equals("") || prenom.getText().equals("") || mail.getText().equals("")) {
 			throw new FormulaireException();
 		} else {
-			this.nom=nom.getText();
-			this.prenom=prenom.getText();
-			this.mail=mail.getText();
-			this.concert=concert.getSelectedItem().toString();
-			this.place=place.getSelection().getActionCommand();
+			this.setNom(nom.getText());
+			this.setPrenom(prenom.getText());
+			this.setMail(mail.getText());
+			this.setConcert(concert.getSelectedItem().toString());
+			this.setPlace(place.getSelection().getActionCommand());
 
 			try {
 				//Création d'une instance de l'objet Driver dans le fichier .jar qu'on a téléchargé
@@ -63,7 +52,45 @@ public class Reservation {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			nom.setText(null);
+			prenom.setText(null);
+			mail.setText(null);
+			//JOptionPane jop1 = new JOptionPane();
+			JOptionPane.showMessageDialog(null, "Vous avez bien réservé une place pour "+this.getConcert(), "Information", JOptionPane.INFORMATION_MESSAGE);
 		}
 		}
+	//Les getter
+	public String getNom() {
+		return this.nom;
+	}
+	public String getPrenom() {
+		return this.prenom;
+	}
+	public String getMail() {
+		return this.mail;
+	}
+	public String getConcert() {
+		return this.concert;
+	}
+	public String getPlace() {
+		return this.place;
+	}
+	
+	//Les setter
+	public void setNom(String n) {
+		this.nom=n;
+	}
+	public void setPrenom(String p) {
+		this.prenom=p;
+	}
+	public void setMail(String m) {
+		this.mail=m;
+	}
+	public void setConcert(String c) {
+		this.concert=c;
+	}
+	public void setPlace(String p) {
+		this.place=p;
+	}
 }
 

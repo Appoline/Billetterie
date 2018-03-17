@@ -124,7 +124,7 @@ public class Fenetre extends JFrame implements ActionListener {
 	    //On informe le bouton que cette fenêtre l'écoute
 	    bouton.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent arg0) {
-	    		JOptionPane confirmation = new JOptionPane();
+	    		//JOptionPane confirmation = new JOptionPane();
 	    		int option=JOptionPane.showConfirmDialog(null,"Es-tu certain de vouloir réserver une place pour "+liste.getSelectedItem().toString()+" ?","Confirmation",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 	    		if (option == JOptionPane.OK_OPTION){
 	    			try {
@@ -139,7 +139,23 @@ public class Fenetre extends JFrame implements ActionListener {
 	    });
 	    
 	  }
-
+/*//Les getter
+	public String getNom() {
+		return nom.getText();
+	}
+	public String getPrenom() {
+		return prenom.getText();
+	}
+	public String getMail() {
+		return mail.getText();
+	}
+	public String getConcert() {
+		return liste.getSelectedItem().toString();
+	}
+	public String getPlace() {
+		return choixPlace.getSelection().getActionCommand();
+	}
+	*/
 	public void actionPerformed(ActionEvent arg0) {
 		
 	}
